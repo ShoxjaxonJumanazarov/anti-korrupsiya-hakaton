@@ -1,0 +1,10 @@
+[
+  { "from": "D1", "to": "D2",  "type": "mentor",        "description": "Rahmonov D2ni ishga qabul qilib, yo'l-yo'riq ko'rsatgan" },
+  { "from": "D1", "to": "D3",  "type": "mentor",        "description": "Rahmonov D3ni bo'limga tavsiya qilgan" },
+  { "from": "D1", "to": "D4",  "type": "tasdiqlovchi",  "description": "Rahmonov D4ning hujjatlarini imzolaydi" },
+  { "from": "D1", "to": "D5",  "type": "hamkasb",       "description": "Birgalikda loyihalarda ishlashgan" },
+  { "from": "D1", "to": "D6",  "type": "hamkasb",       "description": "Birgalikda tender komissiyasida" },
+  { "from": "D8", "to": "D7",  "type": "mentor",        "description": "Qodirov D7ni xaridlar bo'limiga kiritgan" },
+  { "from": "D8", "to": "D9",  "type": "tasdiqlovchi",  "description": "Qodirov D9ning baholarini tasdiqlaydi" },
+  { "from": "D3", "to": "D10", "type": "hamkasb",       "description": "Ismoilov D10ga mentorlik qilmoqda" }
+]

@@ -1,0 +1,91 @@
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from graph_analyzer import CorruptionGraphAnalyzer
+
+app = FastAPI(title="Corruption Epidemic API", version="1.0.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+analyzer = CorruptionGraphAnalyzer()
+
+
+@app.get("/")
+def root():
+    return {"message": "Korruptsioner Epidemiyasi API ishlamoqda", "status": "ok"}
+
+
+@app.post("/employees")
+def add_employee(id: str, name: str, risk: float):
+    analyzer.add_employee(id, name, risk)
+    return {"status": "added", "id": id}
+
+
+@app.post("/connections")
+def add_connection(from_id: str, to_id: str, type: str):
+    analyzer.add_connection(from_id, to_id, type)
+    return {"status": "connected"}
+
+
+@app.get("/super-spreaders")
+def get_super_spreaders():
+    return analyzer.find_super_spreaders(top_n=5)
+
+
+@app.get("/quarantine/{spreader_id}")
+def get_quarantine(spreader_id: str):
+    return analyzer.get_quarantine_list(spreader_id)
+
+
+@app.get("/graph")
+def get_graph():
+    """Barcha tugunlar va bog'liqliklarni qaytarish (frontend uchun)"""
+    nodes = [
+        {"id": n, **analyzer.G.nodes[n]}
+        for n in analyzer.G.nodes()
+    ]
+    edges = [
+        {"source": u, "target": v, **analyzer.G[u][v]}
+        for u, v in analyzer.G.edges()
+    ]
+    return {"nodes": nodes, "edges": edges}
+
+
+@app.on_event("startup")
+async def load_demo():
+    demo_employees = [
+        ("D1", "Rahmonov X.", 0.95),
+        ("D2", "Aliyev Y.", 0.20),
+        ("D3", "Ismoilov Z.", 0.30),
+        ("D4", "Gafurov K.", 0.25),
+        ("D5", "Yusupov M.", 0.40),
+        ("D6", "Toshmatov A.", 0.15),
+        ("D7", "Mirzayev B.", 0.35),
+        ("D8", "Qodirov S.", 0.60),
+        ("D9", "Normatov J.", 0.45),
+        ("D10", "Xoliqov R.", 0.10),
+    ]
+    for emp in demo_employees:
+        analyzer.add_employee(*emp)
+
+    connections = [
+        ("D1", "D2", "mentor"),
+        ("D1", "D3", "mentor"),
+        ("D1", "D4", "tasdiqlovchi"),
+        ("D1", "D5", "hamkasb"),
+        ("D1", "D6", "hamkasb"),
+        ("D8", "D7", "mentor"),
+        ("D8", "D9", "tasdiqlovchi"),
+        ("D3", "D10", "hamkasb"),
+    ]
+    for c in connections:
+        analyzer.add_connection(*c)
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
