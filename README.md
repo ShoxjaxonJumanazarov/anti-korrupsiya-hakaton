@@ -1,35 +1,60 @@
-# 🦠 Korruptsioner Epidemiyasi: Kontakt Izlash
+# 🦠 Corruption Epidemic: Contact Tracing
 
-&gt; **"Korruptsiya kasallikdir. Davolash vaqti keldi."**
+> **"Corruption is a disease. Time to treat it."**
 
-**Xakaton:** Aksilkorrupsiya xakatoni-2026  
-**Jamoa:** [Jamoangiz nomi]  
-**Loyiha turi:** Web Platforma + AI Tahlil
-
----
-
-## 🔥 Muammo
-
-Hozirgi kunda korruptsiyaga qarshi kurash:
-- ❌ Faqat jazo (qamoq, jarima) — simptomni yashiradi
-- ❌ Fuqarodan xabar kutadi — kechikadi
-- ❌ Harakatni kuzatadi, lekin **tarmoqni** emas
-
-**Statistika:** 80% korruptsiya holatlari 20% amaldor tomonidan tarqatiladi.
+**Hackathon:** Anti-Corruption Hackathon 2026  
+**Team:** [Your Team Name]  
+**Type:** Web Platform + AI Network Analysis
 
 ---
 
-## 💡 Yechim: Kontakt Izlash (Contact Tracing)
+## 🔥 The Problem
 
-COVID-19 pandemiyasini qanday to‘xtatdik? **Kontakt izlash** orqali.
+Current anti-corruption approaches:
+- ❌ Only punishment (prison, fines) — hides the symptom
+- ❌ Waits for citizen reports — too late
+- ❌ Tracks actions, not **networks**
 
-Biz xuddi shu epidemiologik usulni korruptsiyaga qo‘llaymiz:
-1. **🔍 Deteksiya** — Kasallikni aniqlash
-2. **🕸️ Tarmoq** — "Super tarqatuvchi"ni topish
-3. **🏥 Karantin** — Davolash (jazo emas!)
-4. **💉 Vaksina** — Oldini olish
+**Fact:** 80% of corruption cases are spread by 20% of officials.
 
 ---
 
-## ⚙️ Arxitektura
-# anti-korrupsiya-hakaton
+## 💡 Our Solution: Contact Tracing for Corruption
+
+We apply epidemiological contact tracing to corruption:
+1. **🔍 Detection** — Identify the infection
+2. **🕸️ Network** — Find the "super-spreader"
+3. **🏥 Quarantine** — Rehabilitation (not punishment!)
+4. **💉 Vaccine** — Prevention for new officials
+
+---
+
+## ⚙️ Architecture
+User → Web App → FastAPI → Neo4j Graph DB → AI Analysis
+plain
+Copy
+
+---
+
+## 🛠 Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Backend | Python, FastAPI |
+| Graph DB | Neo4j (simulated with NetworkX for demo) |
+| Frontend | D3.js, HTML5 |
+| Analysis | NetworkX, scikit-learn |
+
+---
+
+## 🚀 MVP Features
+
+- [x] 20-employee network graph
+- [x] Super-spreader detection algorithm
+- [x] Interactive network visualization
+- [x] Quarantine dashboard
+- [x] Vaccine progress tracking
+
+
+Located in `demo-data/` folder.
+
